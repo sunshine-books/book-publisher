@@ -1,8 +1,11 @@
-function Footer() {
+function Footer(){
     return(
-        <div>
-            <h1>This is the Footer</h1>
-        </div>
+        <footer >
+            <p>
+                <a href="https://github.com/omleche/to-do-list.git">Git Repository</a>
+            </p>
+           
+        </footer>
     )
 }
 
