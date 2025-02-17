@@ -1,8 +1,5 @@
 import { Routes, Route } from 'react-router'
-import { useState } from 'react'
 
-import { API_URL } from './config/api.js'
-import books from {API_URL}
 
 import './App.css'
 
@@ -21,22 +18,20 @@ import SearchBook from './pages/SearchBook.jsx'
 
 function App() {
 
-  const [booksToDisplay, setBooksToDisplay] = useState(books)
-
   return (
     <>
-      <Navbar/>
+      <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/books/:bookId" element={<BookPageDetails/>}/>
-        <Route path="/newBook" element={<NewBook/>}/>
-        <Route path="/searching" element={<SearchBook/>}/>
-        <Route path="/about" element={<About/>}/>
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/books/:bookId" element={<BookPageDetails />} />
+        <Route path="/newBook" element={<NewBook />} />
+        <Route path="/searching" element={<SearchBook />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
-      <Footer/>
+      <Footer />
     </>
   )
 }
