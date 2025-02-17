@@ -1,19 +1,27 @@
 import { Routes, Route } from 'react-router'
+import { useState } from 'react'
+
+import { API_URL } from './config/api.js'
+import books from {API_URL}
+
 import './App.css'
 
 import Navbar from './components/Navbar.jsx'
+import BookPageDetails from './components/BookPageDetails.jsx'
 import Footer from './components/Footer.jsx'
 
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import NotFound from './pages/NotFound.jsx'
-import BookPageDetails from './pages/BookPageDetails.jsx'
 import NewBook from './pages/NewBook.jsx'
 import SearchBook from './pages/SearchBook.jsx'
 
 
 
+
 function App() {
+
+  const [booksToDisplay, setBooksToDisplay] = useState(books)
 
   return (
     <>
@@ -21,7 +29,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/bookDetails/:bookId" element={<BookPageDetails/>}/>
+        <Route path="/books/:bookId" element={<BookPageDetails/>}/>
         <Route path="/newBook" element={<NewBook/>}/>
         <Route path="/searching" element={<SearchBook/>}/>
         <Route path="/about" element={<About/>}/>
