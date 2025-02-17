@@ -1,7 +1,14 @@
+import { Link } from "react-router";
+
 function Navbar() {
-    return(
-        <div>
-            <h1>This is the navbar</h1>
+    return (
+        <div className='nav-bar'>
+            <h1>NAVBAR</h1>
+            <Link to="/">HOME PAGE</Link>
+            <br></br>
+            <Link to="/my-lists">SEARCH BAR</Link>
+            <br></br>
+            <Link to="/about">ABOUT</Link>
         </div>
     )
 }
