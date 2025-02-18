@@ -3,6 +3,7 @@ import { API_URL } from "../config/api";
 import axios from "axios";
 import '../App.css'
 import { Link } from "react-router";
+import ShowBooks from "../components/ShowBooks";
 
 
 
@@ -38,6 +39,8 @@ function Home() {
         )
     }
 
+    // Get the latest book (last item in the array)
+    const latestBook = booksToDisplay[booksToDisplay.length - 1];
     // Function to shuffle the array
     const shuffleArray = (array) => {
         return array.sort(() => Math.random() - 0.5);
@@ -48,30 +51,20 @@ function Home() {
 
 
     return (
-        <div className="books-list">
-            {booksToShow.map((booksDetails, i) => {
-                console.log(booksDetails)
-                return (
-                    <div className="book-card " key={booksDetails.id} >
-                        <div
-                            className="w-64 h-64 bg-cover bg-center rounded-lg"
-                            // style={{ backgroundImage: `url(${booksDetails.coverImg})` }} // need to be change as is in cover-img
-                            style={{ backgroundImage: `url(https://edit.org/img/blog/yrm-1024-plantillas-ebook-gratis-editables-online.webp)` }}> // need to be change as is in cover-img
-                        <div>
-                            New in the collection
-                        </div>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                        <h1 className="book-title">{booksDetails.title}</h1>
-                        <h3 className="book-author">{booksDetails.author}</h3>
-                        <h3>ISBN: {booksDetails.ISBN}</h3>
-                        <Link to="/books/:bookId" className="bg-green-600 text-white text-center block hover:bg-green-700 px-3 py-2 rounded transition">More details</Link>
-                        </div>
-                        
-                    </div>
-                );
-            })}
+        <div className="latest-book">
+            {/* Show the latest book */}
+            <h2>Latest Book:</h2>
+            <div>
+                <h3>{latestBook.title}</h3>
+                <p>Author: {latestBook.author}</p>
+                <img src={latestBook["cover-img"]} alt={latestBook.title} />
+                <Link to={`/books/${latestBook.id}`}>More details</Link>
+            </div>
+
+            {/* Show the rest of the books */}
+            <ShowBooks arrOfBooks={booksToDisplay} latestBook={latestBook}/>
         </div>
+        
     );
 }
 
