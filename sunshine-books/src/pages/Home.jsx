@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
+import '../App.css'
 
 
 
@@ -9,10 +10,6 @@ function Home() {
 
     const [booksToDisplay, setBooksToDisplay] = useState(null);
 
-
-
- 
-    
 
     useEffect(() => {
         axios.get(`${API_URL}/books.json`)
@@ -41,9 +38,9 @@ function Home() {
             {booksToDisplay.map((booksDetails, i) => {
                 console.log(booksDetails)
                 return (
-                    <div className="card" key={booksDetails.id} >
-                        <h1>Title {booksDetails.title}</h1>
-                        <h3>Author: {booksDetails.author}</h3>
+                    <div className="book-card" key={booksDetails.id} >
+                        <h1 className="book-title">Title {booksDetails.title}</h1>
+                        <h3 className="book-author">Author: {booksDetails.author}</h3>
                     </div>
                 );
             })}
