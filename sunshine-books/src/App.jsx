@@ -19,7 +19,7 @@ import SearchBook from './pages/SearchBook.jsx'
 function App() {
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
 
       <Routes>
@@ -32,7 +32,7 @@ function App() {
       </Routes>
 
       <Footer />
-    </>
+    </div>
   )
 }
 
