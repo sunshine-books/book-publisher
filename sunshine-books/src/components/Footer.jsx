@@ -1,6 +1,6 @@
 function Footer(){
     return(
-        <footer >
+        <footer className="footer">
             <p>
                 <a href="https://github.com/omleche/to-do-list.git">Git Repository</a>
             </p>
