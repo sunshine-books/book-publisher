@@ -57,8 +57,8 @@ function Navbar() {
             {/* Menú desplegable en pantallas pequeñas */}
             {isOpen && (
                 <div className="lg:hidden flex flex-col space-y-4 mt-4">
-                    <Link href="/" className="hover:bg-gray-700 px-3 py-2 rounded">Home</Link>
-                    <Link href="/about" className="hover:bg-gray-700 px-3 py-2 rounded">About</Link>
+                    <Link to="/" className="hover:bg-gray-700 px-3 py-2 rounded">Home</Link>
+                    <Link to="/about" className="hover:bg-gray-700 px-3 py-2 rounded">About</Link>
                     <div className="flex flex-col gap-0 " >
                         <input
                             type="text"
@@ -68,7 +68,7 @@ function Navbar() {
                         <button onClick={()=>{navigate("/searchbooks")} } className="bg-orange-500 text-white px-4 py-2 rounded-lg">Search</button>
                     </div>
                     <br></br>
-                    <button className="bg-white text-black px-4 py-2 rounded-lg">Register a Book</button>
+                    <Link to="/NewBook" className="bg-white text-black text-center block\ hover:bg-orange-500 hover:text-white px-3 py-2 rounded transition">Register a Book</Link>
                 </div>
             )}
            

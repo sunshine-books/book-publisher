@@ -20,11 +20,10 @@ function ShowBooks(props) {
             {booksToShow.map((booksDetails) => {
                 console.log(booksDetails)
                 return (
-                    <div className="card" key={booksDetails.id} >
-                        <h1>Title {booksDetails.title}</h1>
-                        <img src={booksDetails["cover-img"]} alt={booksDetails.title} />
-                        <Link to="/books/:bookId">More details</Link>
-                        {/* <Link to={`/books/${booksDetails.id}`}>More details</Link> */}
+                    <div className="book-card" key={booksDetails.id} >
+                        <h1 className="book-title">{booksDetails.title}</h1>
+                        <img src={booksDetails["cover-img"]} alt={booksDetails.title} className="object-cover" />
+                        <Link class="btn-green" to="/books/:bookId">More details</Link>
                     </div>
                 );
             })}
