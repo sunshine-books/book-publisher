@@ -14,8 +14,8 @@ function Home() {
 
 
     //Getting the data from the API and convert to array
- 
-    
+
+
 
     useEffect(() => {
         axios.get(`${API_URL}/books.json`)
@@ -51,13 +51,15 @@ function Home() {
                 <h3>{latestBook.title}</h3>
                 <p>Author: {latestBook.author}</p>
                 <img src={latestBook["cover-img"]} alt={latestBook.title} />
-                <Link to={`/books/${latestBook.id}`}>More details</Link>
+                <Link to={`/books/${latestBook.id}`}>
+                    <button>More details</button>
+                </Link>
             </div>
 
             {/* Show the rest of the books */}
-            <ShowBooks arrOfBooks={booksToDisplay} latestBook={latestBook}/>
+            <ShowBooks arrOfBooks={booksToDisplay} latestBook={latestBook} />
         </div>
-        
+
     );
 }
 
