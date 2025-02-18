@@ -49,7 +49,7 @@ function Navbar() {
               
                     <Link to="/about" className="hover:text-gray-700 px-3 py-2 rounded transition">About</Link>
                     <br></br>
-                    <Link to="/NewBook" className="hover:text-gray-700 px-3 py-2 rounded transition">Register a Book</Link>
+                    <Link to="/NewBook" className="bg-white text-black hover:bg-orange-500 hover:text-white px-3 py-2 rounded transition">Register a Book</Link>
                 </div>
             </div>
 
