@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
+import '../App.css'
 import { Link } from "react-router";
 import ShowBooks from "../components/ShowBooks";
 
@@ -13,6 +14,9 @@ function Home() {
 
 
     //Getting the data from the API and convert to array
+ 
+    
+
     useEffect(() => {
         axios.get(`${API_URL}/books.json`)
             .then(response => {
