@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
 import { Link } from "react-router";
+import ShowBooks from "../components/ShowBooks";
 
 
 
@@ -34,29 +35,25 @@ function Home() {
         )
     }
 
-    // Function to shuffle the array
-    const shuffleArray = (array) => {
-        return array.sort(() => Math.random() - 0.5);
-    };
-
-    // Shuffle the books array and slice the first 3 books
-    const booksToShow = shuffleArray([...booksToDisplay]).slice(0, 2);
+    // Get the latest book (last item in the array)
+    const latestBook = booksToDisplay[booksToDisplay.length - 1];
 
 
     return (
-        <div className="books-list">
-            {booksToShow.map((booksDetails, i) => {
-                console.log(booksDetails)
-                return (
-                    <div className="card" key={booksDetails.id} >
-                        <h1>Title {booksDetails.title}</h1>
-                        <h3>Author: {booksDetails.author}</h3>
-                        <h3>ISBN: {booksDetails.ISBN}</h3>
-                        <Link to="/books/:bookId">More details</Link>
-                    </div>
-                );
-            })}
+        <div className="latest-book">
+            {/* Show the latest book */}
+            <h2>Latest Book:</h2>
+            <div>
+                <h3>{latestBook.title}</h3>
+                <p>Author: {latestBook.author}</p>
+                <img src={latestBook["cover-img"]} alt={latestBook.title} />
+                <Link to={`/books/${latestBook.id}`}>More details</Link>
+            </div>
+
+            {/* Show the rest of the books */}
+            <ShowBooks arrOfBooks={booksToDisplay} latestBook={latestBook}/>
         </div>
+        
     );
 }
 
