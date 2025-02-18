@@ -17,6 +17,8 @@ function Home() {
 
 
 
+
+
     useEffect(() => {
         axios.get(`${API_URL}/books.json`)
             .then(response => {
@@ -77,8 +79,7 @@ function Home() {
                 <ShowBooks arrOfBooks={booksToDisplay} latestBook={latestBook} />
             </div>
         </div>
-
-
+        
     );
 }
 
