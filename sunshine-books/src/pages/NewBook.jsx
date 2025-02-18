@@ -12,6 +12,11 @@ function NewBook() {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [ISBN, setISBN] = useState("");
+    const [format, setFormat] = useState({
+        audiobook: false,
+        ebook: false,
+        print: false
+    });
 
     const navigate = useNavigate();
 
@@ -69,6 +74,44 @@ function NewBook() {
                         onChange={(e) => { setISBN(e.target.value) }}
                     />
                 </label>
+                <fieldset>
+                    <legend>Format</legend>
+                    <label>
+                        Audiobook
+                        <input
+                            type="checkbox"
+                            checked={format.audiobook}
+                            onChange={() => setFormat((prevState) => ({
+                                ...prevState,
+                                audiobook: !prevState.audiobook
+                            }))}
+                        />
+                    </label>
+
+                    <label>
+                        Ebook
+                        <input
+                            type="checkbox"
+                            checked={format.ebook}
+                            onChange={() => setFormat((prevState) => ({
+                                ...prevState,
+                                ebook: !prevState.ebook
+                            }))}
+                        />
+                    </label>
+
+                    <label>
+                        Print
+                        <input
+                            type="checkbox"
+                            checked={format.print}
+                            onChange={() => setFormat((prevState) => ({
+                                ...prevState,
+                                print: !prevState.print
+                            }))}
+                        />
+                    </label>
+                </fieldset>
 
                 <button>Create</button>
             </form>
