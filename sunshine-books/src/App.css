@@ -6,15 +6,17 @@
 
 body {
     font-family: 'Playfair Display', serif;
+    align-items: center;
+
   }
 
 
 .books-list{
-    @apply flex flex-col flex-wrap;
+    @apply p-24 grid grid-cols-2 gap-16;
 }
 
 .book-card {
-    @apply rounded-2xl overflow-hidden shadow-lg bg-white p-4 space-y-4;
+    @apply flex flex-row gap-8 rounded-2xl overflow-hidden bg-white p-8 space-y-4;
 }
 .book-title {
     @apply text-xl font-semibold;

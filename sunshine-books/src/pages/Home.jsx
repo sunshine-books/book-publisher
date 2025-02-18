@@ -41,6 +41,13 @@ function Home() {
 
     // Get the latest book (last item in the array)
     const latestBook = booksToDisplay[booksToDisplay.length - 1];
+    // Function to shuffle the array
+    const shuffleArray = (array) => {
+        return array.sort(() => Math.random() - 0.5);
+    };
+
+    // Shuffle the books array and slice the first 3 books
+    const booksToShow = shuffleArray([...booksToDisplay]).slice(0, 4);
 
 
     return (
