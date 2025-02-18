@@ -44,7 +44,7 @@ function Home() {
     };
 
     // Shuffle the books array and slice the first 3 books
-    const booksToShow = shuffleArray([...booksToDisplay]).slice(0, 2);
+    const booksToShow = shuffleArray([...booksToDisplay]).slice(0, 4);
 
 
     return (
@@ -52,11 +52,22 @@ function Home() {
             {booksToShow.map((booksDetails, i) => {
                 console.log(booksDetails)
                 return (
-                    <div className="book-card" key={booksDetails.id} >
-                        <h1 className="book-title">Title {booksDetails.title}</h1>
-                        <h3 className="book-author">Author: {booksDetails.author}</h3>
+                    <div className="book-card " key={booksDetails.id} >
+                        <div
+                            className="w-64 h-64 bg-cover bg-center rounded-lg"
+                            // style={{ backgroundImage: `url(${booksDetails.coverImg})` }} // need to be change as is in cover-img
+                            style={{ backgroundImage: `url(https://edit.org/img/blog/yrm-1024-plantillas-ebook-gratis-editables-online.webp)` }}> // need to be change as is in cover-img
+                        <div>
+                            New in the collection
+                        </div>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                        <h1 className="book-title">{booksDetails.title}</h1>
+                        <h3 className="book-author">{booksDetails.author}</h3>
                         <h3>ISBN: {booksDetails.ISBN}</h3>
-                        <Link to="/books/:bookId">More details</Link>
+                        <Link to="/books/:bookId" className="bg-green-600 text-white text-center block hover:bg-green-700 px-3 py-2 rounded transition">More details</Link>
+                        </div>
+                        
                     </div>
                 );
             })}
