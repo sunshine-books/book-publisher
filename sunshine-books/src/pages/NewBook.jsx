@@ -17,6 +17,13 @@ function NewBook() {
         ebook: false,
         print: false
     });
+    const [isAvailable, setIsAvailable] = useState(true);
+    const [URL, setURL] = useState();
+    const [genre, setGenre] = useState();
+    const [publishDate, setPublishDate] = useState();
+    const [rating, setRating] = useState();
+    const [retailPrice, setRetailPrice] = useState();
+    const [synopsis, setSynopsis] = useState();
 
     const navigate = useNavigate();
 
@@ -26,7 +33,15 @@ function NewBook() {
         const newBook = {
             ISBN: ISBN,
             title: title,
-            author: author
+            author: author,
+            format: format,
+            "availability-status": isAvailable,
+            "cover-img": URL,
+            genre: genre,
+            "publish-date": publishDate,
+            rating: rating,
+            "retail-price": retailPrice,
+            synopsis: synopsis
         }
 
         axios.post(`${API_URL}/books.json`, newBook)
@@ -65,25 +80,71 @@ function NewBook() {
                 </label>
 
                 <label>
-                    ISBN:
+                    Cover Image:
                     <input
                         type="text"
-                        name="ISBN"
-                        placeholder="name of the ISBN"
-                        value={ISBN}
-                        onChange={(e) => { setISBN(e.target.value) }}
+                        name="cover-img"
+                        placeholder="url for the cover..."
+                        value={URL}
+                        onChange={(e) => { setURL(e.target.value) }}
                     />
                 </label>
+
+                <label>
+                    Genre:
+                    <input
+                        type="text"
+                        name="Genre"
+                        placeholder="genre"
+                        value={genre}
+                        onChange={(e) => { setGenre(e.target.value) }}
+                    />
+                </label>
+
+                <label>
+                    Publish date :
+                    <input
+                        type="number"
+                        name="publish-date"
+                        placeholder="the year"
+                        value={publishDate}
+                        onChange={(e) => { setPublishDate(e.target.value) }}
+                    />
+                </label>
+
+                <label>
+                    Rating :
+                    <input
+                        type="number"
+                        name="rating"
+                        placeholder="rating"
+                        value={rating}
+                        onChange={(e) => { setRating(e.target.value) }}
+                    />
+                </label>
+
+                <label>
+                    Retail price :
+                    <input
+                        type="number"
+                        name="retail-price"
+                        placeholder="price of the book"
+                        value={retailPrice}
+                        onChange={(e) => { setRetailPrice(e.target.value) }}
+                    />
+                </label>
+
                 <fieldset>
                     <legend>Format</legend>
+
                     <label>
-                        Audiobook
+                        Print
                         <input
                             type="checkbox"
-                            checked={format.audiobook}
+                            checked={format.print}
                             onChange={() => setFormat((prevState) => ({
                                 ...prevState,
-                                audiobook: !prevState.audiobook
+                                print: !prevState.print
                             }))}
                         />
                     </label>
@@ -101,17 +162,52 @@ function NewBook() {
                     </label>
 
                     <label>
-                        Print
+                        Audiobook
                         <input
                             type="checkbox"
-                            checked={format.print}
+                            checked={format.audiobook}
                             onChange={() => setFormat((prevState) => ({
                                 ...prevState,
-                                print: !prevState.print
+                                audiobook: !prevState.audiobook
                             }))}
                         />
                     </label>
                 </fieldset>
+
+                <label>
+                    Available:
+                    <input
+                        type="checkbox"
+                        checked={isAvailable} // Reflect state in checkbox
+                        onChange={(e) => setIsAvailable(e.target.checked)} // Toggle state on change
+                    />
+                    {isAvailable ? "Yes" : "No"}  {/* Show Yes if checked, No if unchecked */}
+                </label>
+                
+
+                <label>
+                    Synopsis:
+                    <input
+                        type="textarea"
+                        name="synopsis"
+                        placeholder="enter the synopsis"
+                        value={synopsis}
+                        onChange={(e) => { setSynopsis(e.target.value) }}
+                    />
+                </label>
+
+
+                <label>
+                    ISBN:
+                    <input
+                        type="number"
+                        name="ISBN"
+                        placeholder="name of the ISBN"
+                        value={ISBN}
+                        onChange={(e) => { setISBN(e.target.value) }}
+                    />
+                </label>
+
 
                 <button>Create</button>
             </form>
